@@ -1,6 +1,8 @@
 package Service;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import java.util.*;
 import org.openqa.selenium.WebDriver;
@@ -13,8 +15,9 @@ public class LamdaTestSamsung {
 
     @Test(priority =0 )
     public void OpenBrowser() {
-        System.setProperty("webdriver.chrome.driver", "/home/nirmeetikhandelwal/Downloads/chromedriver_linux64/chromedriver");
-        driver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+//        System.setProperty("webdriver.chrome.driver", "/home/nirmeetikhandelwal/Downloads/chromedriver_linux64/chromedriver");
+        driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         System.out.println("Launching Google Chrome Driver for this test");
         driver.get("https://www.amazon.in");

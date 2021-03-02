@@ -5,25 +5,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class LamdaTestLG {
+
     WebDriver driver;
-
-
-    @Test(priority =1)
+    @Test(priority =0)
     public void executeLG() {
         String name;
         String price;
         int intPrice;
-        WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+//        System.setProperty("webdriver.chrome.driver", "/home/nirmeetikhandelwal/Downloads/chromedriver_linux64/chromedriver");
+        driver=new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://www.amazon.in/");
-        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("lg washing machine");;
         driver.findElement(By.id("nav-search-submit-button")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -49,11 +50,12 @@ public class LamdaTestLG {
 
         for(int k=arrayList_price.size(); k >0;k--)
             System.out.println("Product Price is :" +arrayList_price.get(k-1) +"\t" +"Product Name :" +h1.get(arrayList_price.get(k-1)));
+           driver.close();
 
     }
-
-    @Test(priority =2)
-    public void closeBrowser(){
-        driver.close();
-    }
+//
+//    @Test(priority =2)
+//    public void closeBrowser(){
+//        driver.close();
+//    }
 }
