@@ -24,10 +24,9 @@ public class LamdaTestLG {
         driver=new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://www.amazon.in/");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("lg washing machine");;
         driver.findElement(By.id("nav-search-submit-button")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         List<WebElement> priceList = driver.findElements(By.xpath("//*[contains(@class,'a-price-whole')]"));
         List<WebElement> nameList =driver.findElements(By.xpath("//*[contains(@class,'a-size-medium') and contains(@class,'a-color-base') and contains(@class,'a-text-normal')]"));
 
@@ -58,4 +57,5 @@ public class LamdaTestLG {
 //    public void closeBrowser(){
 //        driver.close();
 //    }
+
 }

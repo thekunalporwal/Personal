@@ -45,6 +45,11 @@
 			<artifactId>testng</artifactId>
 			<version>6.11</version>
 		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -52,6 +57,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

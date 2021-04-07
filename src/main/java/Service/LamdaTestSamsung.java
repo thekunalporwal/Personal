@@ -32,7 +32,7 @@ public class LamdaTestSamsung {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("samsung washing machine");;
         driver.findElement(By.id("nav-search-submit-button")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         List<WebElement> priceList = driver.findElements(By.xpath("//*[contains(@class,'a-price-whole')]"));
         List<WebElement> nameList =driver.findElements(By.xpath("//*[contains(@class,'a-size-medium') and contains(@class,'a-color-base') and contains(@class,'a-text-normal')]"));
 
