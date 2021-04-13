@@ -70,7 +70,39 @@ public class ListnerClassTest {
                s1.push(head);
                head=head.next;
            }
+      return false;
+       }
 
+       public void reverseLinkedList(Node head)
+       {
+           Node current=head ;
+           Node prev=null;
+           Node next=null;
+           while (current != null)
+           {
+               next =current.next ;
+               current.next=prev;
+               prev=current;
+               current=next;
+           }
+           head=prev ;
+       }
+
+       public void BubbleSort(int arr[])
+       {
+           int n=arr.length ;
+           for(int i =0 ; i< n-1 ; i++)
+           {
+               for(int j=0 ; j <n-1-i ; j++)
+               {
+                   if(arr[j]> arr[j+1])
+                   {
+                       int temp=arr[j];
+                       arr[j]=arr[j+1];
+                       arr[j+1]=temp;
+                   }
+               }
+           }
        }
 
 

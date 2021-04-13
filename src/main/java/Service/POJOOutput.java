@@ -18,7 +18,7 @@ public class POJOOutput {
     @JsonProperty("userId")
     private Long userId;
     @JsonProperty("id")
-    private Long id;
+    private int id;
     @JsonProperty("title")
     private String title;
     @JsonProperty("body")
@@ -31,7 +31,7 @@ public class POJOOutput {
     public POJOOutput() {
     }
 
-    public POJOOutput(Long userId, Long id, String title, String body) {
+    public POJOOutput(Long userId, int id, String title, String body) {
         super();
         this.userId = userId;
         this.id = id;
@@ -50,12 +50,12 @@ public class POJOOutput {
     }
 
     @JsonProperty("id")
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
