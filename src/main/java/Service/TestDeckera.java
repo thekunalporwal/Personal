@@ -1,5 +1,6 @@
 package Service;
 
+import POJO.OfflinePojo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import io.restassured.RestAssured;
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import Service.POJOOutput;
+import POJO.POJOOutput;
 
 import java.io.IOException;
 
@@ -19,6 +20,7 @@ public class TestDeckera {
 
     public POJOOutput[] pojoOutput;
     public POJOOutput pojoOutput2 ;
+    public OfflinePojo offlinePojo;
 
     @Test  //Get Request of Array of Json Objects
     public void test1() throws JSONException {
@@ -97,15 +99,15 @@ public class TestDeckera {
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            pojoOutput2 = mapper.readValue(response.getBody().asString(), POJOOutput.class);
+            offlinePojo = mapper.readValue(response.getBody().asString(), OfflinePojo.class);
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(pojoOutput2.getId(),101);
-        Assert.assertEquals(pojoOutput2.getTitle(),"foo");
-        Assert.assertEquals(pojoOutput2.getBody(),"bar");
+        Assert.assertEquals(offlinePojo.getId(),101);
+        Assert.assertEquals(offlinePojo.getTitle(),"foo");
+        Assert.assertEquals(offlinePojo.getBody(),"bar");
     }
 
 

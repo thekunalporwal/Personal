@@ -1,4 +1,4 @@
-package Service;
+package POJO;
 
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
