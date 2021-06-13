@@ -1,18 +1,15 @@
 package POJO;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 //@AllArgsConstructor
 //@NoArgsConstructor
+@ToString
 public class OfflinePojo {
    private String userId;
    private int id;
    private String title;
    private String body;
-
 }

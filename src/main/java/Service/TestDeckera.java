@@ -82,20 +82,20 @@ public class TestDeckera {
 
     @Test //With Body and Headers Post Request
     public void test4() throws JSONException {
-        RestAssured.baseURI="https://jsonplaceholder.typicode.com";
-        RequestSpecification request =RestAssured.given();
+        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+        RequestSpecification request = RestAssured.given();
         request.contentType("application/json");
 
-        JSONObject  payload = new JSONObject();
-        payload.put("title","foo");
-        payload.put("body","bar");
-        payload.put("userId","1");
+        JSONObject payload = new JSONObject();
+        payload.put("title", "foo");
+        payload.put("body", "bar");
+        payload.put("userId", "1");
         request.body(payload.toString());
-        Response response=request.post("/posts");
+        Response response = request.post("/posts");
 
 
-        System.out.println("Response of the API" +response.getBody().asString());
-        Assert.assertEquals(response.getStatusCode(),201);
+        System.out.println("Response of the API" + response.getBody().asString());
+        Assert.assertEquals(response.getStatusCode(), 201);
 
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -105,11 +105,10 @@ public class TestDeckera {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(offlinePojo.getId(),101);
-        Assert.assertEquals(offlinePojo.getTitle(),"foo");
-        Assert.assertEquals(offlinePojo.getBody(),"bar");
+
+        Assert.assertEquals(offlinePojo.getId(), 101);
+        Assert.assertEquals(offlinePojo.getTitle(), "foo");
+        Assert.assertEquals(offlinePojo.getBody(), "bar");
     }
-
-
 
 }

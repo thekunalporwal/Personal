@@ -6,6 +6,7 @@ import java.util.*;
 public class ListnerClassTest {
 
     Node head;
+    Node2 head2;
       class Node {
           Node next;
           int data ;
@@ -104,6 +105,18 @@ public class ListnerClassTest {
                }
            }
        }
+
+       class Node2{
+          int key ;
+          Node2 left ,right ;
+          Node2 (int n){
+              key =n ;
+              left=null ;
+              right=null;
+          }
+       }
+
+
 
 
 
