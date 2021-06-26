@@ -2,13 +2,19 @@ package springdemoAnnotation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component()
 public class TenisCoach implements Coach1 {
 
+    @Value("${foo.email}")
+    private String email;
+
     //field Injection
     @Autowired
+    @Qualifier("happyFortuneService3")
     private FortuneService1 fortuneService1;
 
     //Define a Constructor method
@@ -32,6 +38,7 @@ public class TenisCoach implements Coach1 {
 
     @Override
     public String getDailyWorkout() {
+        System.out.println(email);
         return "Spend 60 minutes on batting practice";
     }
 

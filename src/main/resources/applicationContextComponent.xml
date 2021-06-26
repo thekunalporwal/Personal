@@ -10,6 +10,9 @@
     <!-- Define your beans here -->
     <context:component-scan base-package="springdemoAnnotation" />
 
+    <context:property-placeholder location="classpath:scratch.properties"/>
+
+
 
 </beans>
 
