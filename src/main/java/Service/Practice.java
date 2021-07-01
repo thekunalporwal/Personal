@@ -1,35 +1,71 @@
 package Service;
 
+import POJO.Data;
 import POJO.POJOOutput;
+import POJO.RechargeSharedOperator;
+import com.google.gson.Gson;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Practice {
+    public void jsonToObject() {
+        String jasonString = "{\"success\":true,\"data\":[{\"operatorId\":1,\"operatorName\":\"airtel\",\"operatorTitle\":\"Airtel\",\"categoryName\":\"prepaid\",\"categoryId\":1},{\"operatorId\":2,\"operatorName\":\"vodafone\",\"operatorTitle\":\"Vodafone\",\"categoryName\":\"prepaid\",\"categoryId\":1}]}";
 
+        RechargeSharedOperator rechargeSharedOperator = new Gson().fromJson(jasonString, RechargeSharedOperator.class);
+
+        List<Data> list = new ArrayList<>(rechargeSharedOperator.getData());
+
+        for (Data datalist : list) {
+            System.out.println(datalist.getOperatorId());
+            System.out.println(datalist.getOperatorName());
+        }
+    }
+
+    public void arrayListPrint(){
+        List<String> widgetsPriority = new ArrayList<>();
+        widgetsPriority.add("KYC");
+        widgetsPriority.add("ZIP");
+        widgetsPriority.add("UPI");
+        widgetsPriority.add("AUTO_RECHARGE");
+        widgetsPriority.add("GRAND_SLAM");
+
+
+        widgetsPriority.forEach(widgets -> System.out.println(widgets));
+    }
 
 
     public static void main(String args[]) {
-        String s1="xyzabcdefghijklmnopqrstuvw";
-        char[] arr=s1.toCharArray();
-        int value = 0;
-        for (int i = 0; i < (arr.length)-1; i++)
-        {
-            int valueTill=0;
-            if(arr[i]==97) {
-                 int j=i;
-                while (j+1 <arr.length && arr[j] + 1 == arr[j + 1] ) {
-                    valueTill=valueTill+1;
-                    j++;
-                }
-            }
-            if(valueTill>value)
-                value=valueTill;
-        }
-        System.out.println(25-value);
-
+        Practice practice=new Practice();
+        practice.jsonToObject();
+        practice.arrayListPrint();
     }
+}
+
+
+
+
+//    public static void main(String args[]) {
+//        String s1="xyzabcdefghijklmnopqrstuvw";
+//        char[] arr=s1.toCharArray();
+//        int value = 0;
+//        for (int i = 0; i < (arr.length)-1; i++)
+//        {
+//            int valueTill=0;
+//            if(arr[i]==97) {
+//                 int j=i;
+//                while (j+1 <arr.length && arr[j] + 1 == arr[j + 1] ) {
+//                    valueTill=valueTill+1;
+//                    j++;
+//                }
+//            }
+//            if(valueTill>value)
+//                value=valueTill;
+//        }
+//        System.out.println(25-value);
+
+//    }
 
 //    public static void main(String args[]) {
 //        POJOOutput pojoOutput = null;
@@ -131,4 +167,3 @@ public class Practice {
 //        System.out.println(add(s,6)); //error on this line
 //       }
 //   }
-}
