@@ -10,36 +10,48 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Practice {
-    public void jsonToObject() {
-        String jasonString = "{\"success\":true,\"data\":[{\"operatorId\":1,\"operatorName\":\"airtel\",\"operatorTitle\":\"Airtel\",\"categoryName\":\"prepaid\",\"categoryId\":1},{\"operatorId\":2,\"operatorName\":\"vodafone\",\"operatorTitle\":\"Vodafone\",\"categoryName\":\"prepaid\",\"categoryId\":1}]}";
+      public void checkIterator(){
+          int operatorId=140;
+          int circleId=1;
+          String planCode="102003";
 
-        RechargeSharedOperator rechargeSharedOperator = new Gson().fromJson(jasonString, RechargeSharedOperator.class);
+          StringBuilder mapKey=new StringBuilder();
 
-        List<Data> list = new ArrayList<>(rechargeSharedOperator.getData());
+          mapKey.append(operatorId).append("~").append(circleId).append("~").append(planCode);
+          System.out.println(mapKey.toString());
+      }
 
-        for (Data datalist : list) {
-            System.out.println(datalist.getOperatorId());
-            System.out.println(datalist.getOperatorName());
-        }
-    }
-
-    public void arrayListPrint(){
-        List<String> widgetsPriority = new ArrayList<>();
-        widgetsPriority.add("KYC");
-        widgetsPriority.add("ZIP");
-        widgetsPriority.add("UPI");
-        widgetsPriority.add("AUTO_RECHARGE");
-        widgetsPriority.add("GRAND_SLAM");
-
-
-        widgetsPriority.forEach(widgets -> System.out.println(widgets));
-    }
+//    public void jsonToObject() {
+//        String jasonString = "{\"success\":true,\"data\":[{\"operatorId\":1,\"operatorName\":\"airtel\",\"operatorTitle\":\"Airtel\",\"categoryName\":\"prepaid\",\"categoryId\":1},{\"operatorId\":2,\"operatorName\":\"vodafone\",\"operatorTitle\":\"Vodafone\",\"categoryName\":\"prepaid\",\"categoryId\":1}]}";
+//
+//        RechargeSharedOperator rechargeSharedOperator = new Gson().fromJson(jasonString, RechargeSharedOperator.class);
+//
+//        List<Data> list = new ArrayList<>(rechargeSharedOperator.getData());
+//
+//        for (Data datalist : list) {
+//            System.out.println(datalist.getOperatorId());
+//            System.out.println(datalist.getOperatorName());
+//        }
+//    }
+//
+//    public void arrayListPrint(){
+//        List<String> widgetsPriority = new ArrayList<>();
+//        widgetsPriority.add("KYC");
+//        widgetsPriority.add("ZIP");
+//        widgetsPriority.add("UPI");
+//        widgetsPriority.add("AUTO_RECHARGE");
+//        widgetsPriority.add("GRAND_SLAM");
+//
+//
+//        widgetsPriority.forEach(widgets -> System.out.println(widgets));
+//    }
 
 
     public static void main(String args[]) {
         Practice practice=new Practice();
-        practice.jsonToObject();
-        practice.arrayListPrint();
+        practice.checkIterator();
+//        practice.jsonToObject();
+//        practice.arrayListPrint();
     }
 }
 
