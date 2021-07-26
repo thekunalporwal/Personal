@@ -6,7 +6,6 @@ public class TriggerThread {
     public static void main(String args[]) {
 
         Solution solution=new Solution() ;
-//        Runnable runnable2=new MyRunnableMemory() ;
 
         Thread t1=
                 new Thread(new Runnable() {

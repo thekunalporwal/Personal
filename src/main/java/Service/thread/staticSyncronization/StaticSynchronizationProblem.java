@@ -1,4 +1,4 @@
-package Service.thread;
+package Service.thread.staticSyncronization;
 
 class StaticSynchronizationProblem {
 
