@@ -1,4 +1,4 @@
-package Service;
+package Service.javaMiscellaneous.userDefinedException;
 
 public class UserDefinedException extends Exception
 {
