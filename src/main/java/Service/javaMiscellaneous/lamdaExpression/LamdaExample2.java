@@ -1,7 +1,7 @@
 package Service.javaMiscellaneous.lamdaExpression;
 
 
-public class LamdaExample2 {
+public class LamdaExample2 implements MyInterface{
 
        public static void main (String[] args) {
 
@@ -13,7 +13,19 @@ public class LamdaExample2 {
                System.out.println(text);
            };
            myInterface.printIt("Hello World");
+           LamdaExample2 lamdaExample2=new LamdaExample2();
+           lamdaExample2.printUtf8o("HAHAHA");
 
            MyInterface.printItToSystemOutString("Hi Static Method");
        }
+
+    @Override
+    public void printIt(String text) {
+
+    }
+    @Override
+    public void printUtf8o(String text) {
+        System.out.println(text);
+
+    }
 }
