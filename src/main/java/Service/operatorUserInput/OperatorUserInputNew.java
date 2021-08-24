@@ -88,7 +88,7 @@ public class OperatorUserInputNew {
         }
 
         public void setIsAmountRequired(Boolean isAmountRequired) {
-            isAmountRequired = isAmountRequired;
+            this.isAmountRequired = isAmountRequired;
         }
 
         public String getIdentifier() {
