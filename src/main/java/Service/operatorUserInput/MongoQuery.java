@@ -4,14 +4,15 @@ import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import javax.activation.DataSource;
+import javax.mail.util.ByteArrayDataSource;
+import java.io.*;
 import java.util.*;
 
 @Service
@@ -23,8 +24,10 @@ public class MongoQuery{
 
     private static final Logger logger = LogManager.getLogger(MongoQuery.class);
 
+    @Value("${recharge.education.sender.list:kunal.gupta@mobikwik.com}")
+    private String recipientList;
 
-    public static Boolean processFile(File file) throws IOException {
+    public byte[] processFile(File file) throws IOException {
         OperatorUserInputNew userInput=new OperatorUserInputNew();
 
         // Seller Determination.
@@ -56,13 +59,12 @@ public class MongoQuery{
         Map<String, OperatorUserInputNew.Field> fieldMap=new HashMap<>();
         Map<String, String> fieldMapCombination=new HashMap<>();
 
-        Map<String, OperatorUserInput.Document> labelMap=new HashMap<>();
+        Map<String, String> layoutMap=new HashMap<>();
 
 
 
         Map<String,Integer> commonMap=new HashMap<>();
         Map<String,String> linkedCombinationMap=new HashMap<>();
-
 
         FileInputStream file1 =new FileInputStream(file);
 
@@ -89,6 +91,11 @@ public class MongoQuery{
 
 
                 Row row = rowIterable.next();
+
+                Cell cell2 = row.createCell(row.getLastCellNum(), CellType.STRING);
+                if(row.getRowNum() != 0)
+                    cell2.setCellValue("a");
+
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 Map<String,List<OperatorUserInput.LinkedDocument>> map=new HashMap<>();
@@ -135,9 +142,13 @@ public class MongoQuery{
 //                        System.out.println(cell.getColumnIndex());
                         continue;
                     }
+                    if (cell.getStringCellValue().equalsIgnoreCase("customerParams")) {
+                        System.out.println("hehe is"+cell.getStringCellValue());
+//                        System.out.println(cell.getColumnIndex());
+                        continue;
+                    }
 
                     switch (cell.getColumnIndex()){
-
                         case 0:
                             if (commonMap.get(cell.getStringCellValue())==null){
                                 commonMap.put(cell.getStringCellValue(),rowValueForState);
@@ -175,15 +186,17 @@ public class MongoQuery{
 
                         case 3:
                             mongoDTO.setBillerId(cell.getStringCellValue());
-                            fieldList.add(generateFieldMap(cell.getStringCellValue(),fieldMap,fieldMapCombination));
-                            id=generateLayoutMap(cell.getStringCellValue(),fieldMap,fieldMapCombination,layoutList);
+                            generateFieldMap(cell.getStringCellValue(),fieldMap,fieldMapCombination,fieldList);
+                            id=generateLayoutMap(cell.getStringCellValue(),fieldMap,fieldMapCombination,layoutList,layoutMap);
                             combination=combination+"~"+cell.getStringCellValue();
                             break;
-
+                        case 4:
+                            cell.setCellValue(fieldMapCombination.get(mongoDTO.getBillerId()));
+                            break;
                     }
 
                 }
-                System.out.println(mongoDTO.toString());
+//                System.out.println(mongoDTO.toString());
 //                System.out.println(linkedDocumentList);
 
                 if (mongoDTO.getCity()!=null ) {
@@ -216,6 +229,28 @@ public class MongoQuery{
                 linkedCombinationMap.put(combination,id);
 
             }
+
+            documentListForState.sort(new Comparator<OperatorUserInput.Document>() {
+                @Override
+                public int compare(OperatorUserInput.Document d1, OperatorUserInput.Document d2) {
+                    return d1.getValueDisplay().compareTo(d2.getValueDisplay());
+                }
+            });
+
+            documentListForCity.sort(new Comparator<OperatorUserInput.Document>() {
+                @Override
+                public int compare(OperatorUserInput.Document d1, OperatorUserInput.Document d2) {
+                    return d1.getValueDisplay().compareTo(d2.getValueDisplay());
+                }
+            });
+
+            documentListForSchool.sort(new Comparator<OperatorUserInput.Document>() {
+                @Override
+                public int compare(OperatorUserInput.Document d1, OperatorUserInput.Document d2) {
+                    return d1.getValueDisplay().compareTo(d2.getValueDisplay());
+                }
+            });
+
             topLevelDocumentForState.setDocuments(documentListForState);
             topLevelDocumentForCity.setDocuments(documentListForCity);
             topLevelDocumentForSchool.setDocuments(documentListForSchool);
@@ -234,27 +269,34 @@ public class MongoQuery{
         }catch (Exception e){
             logger.info("Inside fetching");
             logger.info(e,e);
-            return false;
+//            return false;
         }
 
-        System.out.println(fieldMap);
-        System.out.println(fieldMapCombination);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            xssfWorkbook.write(bos); // write excel data to a byte array
+        } catch (IOException e) {
+            logger.error(e, e);
+        }
+        byte[] byteArray = bos.toByteArray();
+        DataSource dataSource =new ByteArrayDataSource(byteArray, "application/vnd.ms-excel");
+        return byteArray;
+
+//        System.out.println(fieldMap);
+//        System.out.println(fieldMapCombination);
 
         //  System.out.println(documentListForCity);
         //  System.out.println(documentListForSchool);
-//         System.out.println(userInput.getTopLevelDocuments().get(2).getDocuments().size());
-//         System.out.println(userInput.getSellerDetermination().get(0).getLinkedCombinations().size());
-        System.out.println(new Gson().toJson(userInput));
+//        System.out.println(new Gson().toJson(userInput));
 
-        return true;
+//        return true;
     }
 
-    public static OperatorUserInputNew.Field generateFieldMap(String Biller_id,Map<String,OperatorUserInputNew.Field> fieldmap,Map<String,String> fieldMapCombination){
+    public void generateFieldMap(String Biller_id,Map<String,OperatorUserInputNew.Field> fieldmap,Map<String,String> fieldMapCombination ,List<OperatorUserInputNew.Field> fieldList){
         StringBuilder combination=new StringBuilder();
 
         if(fieldmap.get("abcdegh")!=null) {
             combination.append(fieldmap.get("abcdefgh").getIdentifier()).append('~');
-            return null;
         } else {
             OperatorUserInputNew.Field field = new OperatorUserInputNew.Field();
             field.setFieldKey(generatingRandomString());
@@ -263,47 +305,55 @@ public class MongoQuery{
             field.setIsnumeric(true);
             field.setRegex(generatingRandomString());
             field.setIcon("x");
-            combination.append(fieldId).append('~');
+            combination.append(field.getIdentifier()).append('~');
             fieldId++;
             fieldmap.put(field.getName(), field);
             fieldmap.put(field.getIdentifier(), field);
-            fieldMapCombination.put(Biller_id,combination.toString());
+
+            fieldList.add(field);
 //            System.out.println("fieldid is" + fieldId);
-            return field;
         }
+        fieldMapCombination.put(Biller_id,combination.toString());
+
     }
 
-    public static String generateLayoutMap(String Biller_id,Map<String,OperatorUserInputNew.Field> fieldmap,Map<String,String> fieldMapCombination, List<OperatorUserInputNew.Layout> layoutList){
+    public String generateLayoutMap(String Biller_id,Map<String,OperatorUserInputNew.Field> fieldmap,Map<String,String> fieldMapCombination, List<OperatorUserInputNew.Layout> layoutList ,Map<String,String> layoutMap){
 
-           OperatorUserInputNew.Layout layout=new OperatorUserInputNew.Layout();
-           List<Integer> linkedLabel=new ArrayList<>();
-           List<OperatorUserInputNew.LabelMapping> labelMapping=new ArrayList<>();
-
-
-           String[] lables=fieldMapCombination.get(Biller_id).split("~");
-//         String[] lables={"1","2","3"};
-           for(String l1 : lables){
-               OperatorUserInputNew.LabelMapping mapping= new OperatorUserInputNew.LabelMapping();
-//               if(Objects.nonNull(fieldmap.get(l1)))
-               mapping.setFieldName(fieldmap.get(l1).getName());
-               mapping.setLabels(Collections.singletonList(Integer.valueOf(l1)));
-               mapping.setSeparator(null);
-               labelMapping.add(mapping);
-               System.out.println(Integer.valueOf(l1));
-               linkedLabel.add(Integer.valueOf(l1));
+           if(layoutMap.get(fieldMapCombination.get(Biller_id))!=null){
+               return layoutMap.get(fieldMapCombination.get(Biller_id));
            }
-//              linkedLabel.add(5);
-           layout.setIdentifier(String.valueOf(layoutId++));
-           layout.setViewBill(true);
-           layout.setIsAmountRequired(false);
-           layout.setLinkedLabels(linkedLabel);
-           layout.setLabelMapping(labelMapping);
+           else {
+               OperatorUserInputNew.Layout layout = new OperatorUserInputNew.Layout();
+               List<Integer> linkedLabel = new ArrayList<>();
+               List<OperatorUserInputNew.LabelMapping> labelMapping = new ArrayList<>();
 
-           layoutList.add(layout);
-        return layout.getIdentifier();
+
+               String[] lables = fieldMapCombination.get(Biller_id).split("~");
+//         String[] lables={"1","2","3"};
+               for (String l1 : lables) {
+                   OperatorUserInputNew.LabelMapping mapping = new OperatorUserInputNew.LabelMapping();
+//               if(Objects.nonNull(fieldmap.get(l1)))
+                   mapping.setFieldName(fieldmap.get(l1).getName());
+                   mapping.setLabels(Collections.singletonList(Integer.valueOf(l1)));
+                   mapping.setSeparator(null);
+                   labelMapping.add(mapping);
+//                   System.out.println(Integer.valueOf(l1));
+                   linkedLabel.add(Integer.valueOf(l1));
+               }
+//              linkedLabel.add(5);
+               layout.setIdentifier(String.valueOf(layoutId++));
+               layout.setViewBill(true);
+               layout.setIsAmountRequired(false);
+               layout.setLinkedLabels(linkedLabel);
+               layout.setLabelMapping(labelMapping);
+
+               layoutList.add(layout);
+               layoutMap.put(fieldMapCombination.get(Biller_id), layout.getIdentifier());
+               return layout.getIdentifier();
+           }
     }
 
-    public static String generatingRandomString() {
+    public String generatingRandomString() {
 
             int leftLimit = 97; // letter 'a'
             int rightLimit = 122; // letter 'z'
@@ -322,8 +372,13 @@ public class MongoQuery{
     }
 
     public static void main(String[] args) throws IOException {
-        processFile(new File("/home/nirmeetikhandelwal/Education2.xlsx"));
-    }
+        MongoQuery mongoQuery=new MongoQuery();
+        String FILEPATH = "src/main/resources/abcdefghjbi.xlsx";
+        File file = new File(FILEPATH);
+        OutputStream os = new FileOutputStream(file);
+        os.write(mongoQuery.processFile(new File("/home/nirmeetikhandelwal/Education2.xlsx")));
+        os.close();
 
+    }
 }
 
