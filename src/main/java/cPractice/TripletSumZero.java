@@ -1,4 +1,4 @@
-package codingPractice;
+package cPractice;
 
 import java.util.ArrayList;
 import java.util.Arrays;

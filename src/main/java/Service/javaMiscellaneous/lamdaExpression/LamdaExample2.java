@@ -9,10 +9,10 @@ public class LamdaExample2 implements MyInterface{
            // a single unimplemented method (abstract) method ,
            //but as many default or static methods as you like.
 
-           MyInterface myInterface = (String text) -> {
+           MyInterface myInterface = (String text,String text2) -> {
                System.out.println(text);
            };
-           myInterface.printIt("Hello World");
+           myInterface.print2("Hello World","HEHE");
            LamdaExample2 lamdaExample2=new LamdaExample2();
            lamdaExample2.printUtf8o("HAHAHA");
 
@@ -20,7 +20,7 @@ public class LamdaExample2 implements MyInterface{
        }
 
     @Override
-    public void printIt(String text) {
+    public void print2(String text,String text2) {
 
     }
     @Override

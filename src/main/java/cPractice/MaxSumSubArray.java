@@ -1,4 +1,4 @@
-package codingPractice;
+package cPractice;
 
 public class MaxSumSubArray {
 
