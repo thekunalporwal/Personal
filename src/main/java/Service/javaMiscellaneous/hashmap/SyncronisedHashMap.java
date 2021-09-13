@@ -74,7 +74,7 @@ public class SyncronisedHashMap {
 
 
         SyncronisedHashMap syncronisedHashMap=new SyncronisedHashMap();
-//        syncronisedHashMap.iterateMap(hashMap);
+        syncronisedHashMap.iterateMap(hashMap);
         syncronisedHashMap.sortMap(hashMap);
 
 
