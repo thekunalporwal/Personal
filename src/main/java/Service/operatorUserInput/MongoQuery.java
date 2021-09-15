@@ -11,7 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import javax.activation.DataSource;
-import javax.mail.util.ByteArrayDataSource;
 import java.io.*;
 import java.util.*;
 
@@ -279,7 +278,7 @@ public class MongoQuery{
             logger.error(e, e);
         }
         byte[] byteArray = bos.toByteArray();
-        DataSource dataSource =new ByteArrayDataSource(byteArray, "application/vnd.ms-excel");
+//        DataSource dataSource =new ByteArrayDataSource(byteArray, "application/vnd.ms-excel");
         return byteArray;
 
 //        System.out.println(fieldMap);

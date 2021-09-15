@@ -29,7 +29,6 @@ public class MaxSumSubArray {
             maxTill=Math.max(maxTill+arr[i],arr[i]);
             maxSum=Math.max(maxSum,maxTill);
         }
-
         System.out.println(maxSum);
     }
 
