@@ -1,4 +1,4 @@
-package Service;
+package Service.others;
 
 import POJO.OfflinePojo;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,7 +27,11 @@ public class TestDeckera {
 
         RestAssured.baseURI ="https://jsonplaceholder.typicode.com";
         RequestSpecification request=RestAssured.given();
+
+
         Response response=request.get("/posts");
+
+
         System.out.println("Response of the API" +response.getBody().asString());
         Assert.assertEquals(response.getStatusCode(),200);
         ObjectMapper mapper=new ObjectMapper();

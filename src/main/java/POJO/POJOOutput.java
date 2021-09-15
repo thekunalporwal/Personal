@@ -6,16 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "userId",
-        "id",
-        "title",
-        "body"
-})
-@Generated("jsonschema2pojo")
 public class POJOOutput {
 
-    @JsonProperty("userId")
+    @JsonProperty("user-Id")
     private Long userId;
     @JsonProperty("id")
     private int id;

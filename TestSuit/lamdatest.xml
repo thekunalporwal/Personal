@@ -5,8 +5,8 @@
 
     <test name="LG"  parallel = "classes" thread-count = "2">
         <classes>
-            <class name="Service.LamdaTestLG"/>
-            <class name="Service.LamdaTestSamsung"/>
+            <class name="Service.others.LamdaTestLG"/>
+            <class name="Service.others.LamdaTestSamsung"/>
         </classes>
     </test>
 </suite>
