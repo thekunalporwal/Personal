@@ -28,6 +28,11 @@ public class DatePractice {
         dateTime = dateTime.minusMinutes(15);
         System.out.println(currentDate + "This is 15 minus date " + dateTime);
 
+        double amount= Double.parseDouble("236.0");
+        System.out.println(String.format("%.0f",amount * 100));
+
+
+
 
     }
 

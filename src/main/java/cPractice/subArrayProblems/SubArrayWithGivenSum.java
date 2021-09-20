@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.subArrayProblems;
 
 public class SubArrayWithGivenSum {
     public void maxSum(int[] arr,int result) {
@@ -17,7 +17,7 @@ public class SubArrayWithGivenSum {
 
             if(current_sum==result){
                 System.out.println(j + " " +(i-1));
-                break;
+//                break;
             }
 
                 current_sum=current_sum+arr[i];
@@ -28,7 +28,7 @@ public class SubArrayWithGivenSum {
     }
 
     public static void main(String args[]) {
-        int[] arr = {15, 2, 4, 8, 9, 5, 10, 23};
+        int[] arr = {15, 2, 4, 8, 9, 5, 1, 23};
         int result=23;
         SubArrayWithGivenSum maxSumSubArray = new SubArrayWithGivenSum();
         maxSumSubArray.maxSum(arr,result);

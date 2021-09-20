@@ -1,6 +1,6 @@
-package cPractice;
+package cPractice.subArrayProblems;
 
-public class MaxSumSubArray {
+public class MaxSumSubArrayKadane {
 
     public void maxSum(int[] arr){
 
@@ -35,8 +35,8 @@ public class MaxSumSubArray {
 
     public static void main(String args[]){
         int[] arr={-1,4,5,-4,8};
-        MaxSumSubArray maxSumSubArray=new MaxSumSubArray();
-        maxSumSubArray.maxSum(arr);
-        maxSumSubArray.maxSumAlternate(arr);
+        MaxSumSubArrayKadane maxSumSubArrayKadane =new MaxSumSubArrayKadane();
+        maxSumSubArrayKadane.maxSum(arr);
+        maxSumSubArrayKadane.maxSumAlternate(arr);
     }
 }

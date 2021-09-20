@@ -8,8 +8,12 @@ public class JavaThreadDemo extends Thread{
 
     public static void main(String args[]) {
 
+           Thread T1=new Thread(new JavaThreadDemo());
            JavaThreadDemo javaThreadDemo=new JavaThreadDemo();
-           javaThreadDemo.start();
+//         JavaThreadDemo javaThreadDemo2=new JavaThreadDemo();
+
+        javaThreadDemo.start();
+        javaThreadDemo.start(); //Exception can't run two times.
 
     }
 }

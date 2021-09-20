@@ -15,7 +15,7 @@ public class ExecutorServiceExample {
         Future future= executor1.submit(newRunnable("Task 1.2"));   //submit return an object by default
         System.out.println(future.isDone());
         try{
-            future.get();
+            System.out.println("runnable object is " +future.get());
         }catch (InterruptedException | ExecutionException e){ }
         System.out.println(future.isDone());
 
@@ -24,7 +24,7 @@ public class ExecutorServiceExample {
         //Method 3
         Future future2= executor1.submit(newCallable("Task 1.3"));
         System.out.println(future.isDone());
-        System.out.println(future2.get());
+        System.out.println("callable object is " +future2.get());
 
 
         executor1.shutdown();

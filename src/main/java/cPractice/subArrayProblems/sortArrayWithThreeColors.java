@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.subArrayProblems;
 
 import java.util.Arrays;
 
