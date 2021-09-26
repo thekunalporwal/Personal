@@ -52,6 +52,19 @@ public class SyncronisedHashMap {
         Collections.sort(l1,(i1,i2)-> i1.getKey().compareTo(i2.getKey()));
         System.out.println(l1);
 
+
+        //using own comparatorMethod
+        List<Map.Entry<Integer,String>> l3= new LinkedList<>(hashMap.entrySet());
+        Collections.sort(l3, new Comparator<Map.Entry<Integer, String>>() {
+            @Override
+            public int compare(Map.Entry<Integer, String> t2, Map.Entry<Integer, String> t1) {
+
+                return t2.getValue().compareTo(t1.getValue());
+            }
+        });
+        System.out.println("using compare" +l3);
+
+
         //sort map by values
         List<Map.Entry<Integer,String>> l2= new ArrayList<>(hashMap.entrySet());
         Collections.sort(l2, Comparator.comparing(Map.Entry::getValue));
@@ -70,8 +83,8 @@ public class SyncronisedHashMap {
         Map<Integer,String> hashMap=new HashMap<>();
         hashMap.put(8,"hello");
         hashMap.put(4,"world");
+        hashMap.put(9,"nice");
         hashMap.put(11,"nice");
-
 
         SyncronisedHashMap syncronisedHashMap=new SyncronisedHashMap();
         syncronisedHashMap.iterateMap(hashMap);
