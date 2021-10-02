@@ -1,4 +1,4 @@
-package Service.thread.question1;
+package Service.thread.questions;
 
 public class Solution {
 

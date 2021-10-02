@@ -10,10 +10,10 @@ public class JavaThreadDemo extends Thread{
 
            Thread T1=new Thread(new JavaThreadDemo());
            JavaThreadDemo javaThreadDemo=new JavaThreadDemo();
-//         JavaThreadDemo javaThreadDemo2=new JavaThreadDemo();
+         JavaThreadDemo javaThreadDemo2=new JavaThreadDemo();
 
         javaThreadDemo.start();
-        javaThreadDemo.start(); //Exception can't run two times.
+        javaThreadDemo2.start(); //Exception can't run two times.
 
     }
 }

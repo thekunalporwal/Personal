@@ -13,19 +13,19 @@ public class ComparatorAndCompareTO implements Comparable<ComparatorAndCompareTO
 
     public static void compareOwn(Map<Integer,String> hashMap) {
 
-
         List<Map.Entry<Integer,String>> list =hashMap.entrySet().stream().collect(Collectors.toList());
-        ComparatorAndCompareTO c2=new ComparatorAndCompareTO();
 
         list.sort(new Comparator<Map.Entry<Integer, String>>() {
             @Override
             public int compare(Map.Entry<Integer, String> t1, Map.Entry<Integer, String> t2) {
-                return t1.getValue().compareTo(t2.getValue());
+
+                int number= t2.getValue().compareTo(t1.getValue());
+                return number==0 ? t2.getKey().compareTo(t1.getKey()) : number;
             }
         });
 
         for(Map.Entry<Integer,String> ll : list)
-            System.out.println(ll.getKey() +ll.getValue());
+            System.out.println(ll.getKey()+" " +ll.getValue());
 
 
     }

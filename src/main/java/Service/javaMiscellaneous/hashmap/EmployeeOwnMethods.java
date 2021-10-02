@@ -40,7 +40,6 @@ public class EmployeeOwnMethods implements Comparable<EmployeeOwnMethods> {
         //let's sort the employee based on an id in ascending order
         //returns a negative integer, zero, or a positive integer as this employee id
         //is less than, equal to, or greater than the specified object
-        System.out.println("own compareTo");
         return (this.id - emp.id);
     }
 

@@ -9,7 +9,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class HashCodeAndEquals {
-
     String name;
     Integer id;
 

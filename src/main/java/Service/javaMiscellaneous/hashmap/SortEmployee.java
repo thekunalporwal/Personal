@@ -15,5 +15,8 @@ public class SortEmployee {
         Arrays.sort(empArr);
         System.out.println(Arrays.toString(empArr));
 
+        Arrays.sort(empArr,EmployeeOwnMethods.NameComparator);
+        System.out.println(Arrays.toString(empArr));
+
     }
 }
