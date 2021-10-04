@@ -10,9 +10,13 @@
 
     <!-- Define your beans here -->
 
-<!--    <mvc:interceptors>-->
-<!--        <bean id="loggerInterceptor" class="springBoot.interceptor.RegisterInterceptor"/>-->
-<!--    </mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/abc"/>
+            <mvc:exclude-mapping path="/abd/**"/>
+            <bean class="springBoot.interceptor.InterceptorClass"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <context:component-scan base-package="springdemoAnnotation" />
 

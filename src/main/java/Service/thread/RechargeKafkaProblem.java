@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class Problem1 {
+public class RechargeKafkaProblem {
 
     protected void action() throws InterruptedException {
 
@@ -50,8 +50,8 @@ public class Problem1 {
     }
 
     public static void main(String args[]) throws InterruptedException {
-        Problem1 problem1=new Problem1();
-        problem1.action();
+        RechargeKafkaProblem rechargeKafkaProblem =new RechargeKafkaProblem();
+        rechargeKafkaProblem.action();
     }
 
 
