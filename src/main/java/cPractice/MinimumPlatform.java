@@ -8,17 +8,32 @@ public class MinimumPlatform {
 
         Arrays.sort(arr);
         Arrays.sort(dep);
+        int n=arr.length;
 
-        int first=0;
-        int second=0;
-        int hight= arr.length-1;
-        int result=0;
-        int resultTillNow=0;
+        int plat_needed = 1;
+        int result = 1;
+        int i = 1, j = 0;
 
-        while(first<second){
+        while (i < n && j < n) {
+            // If next event in sorted order is arrival,
+            // increment count of platforms needed
+            if (arr[i] <= dep[j]) {
+                plat_needed++;
+                i++;
+            }
 
+            // Else decrement count of platforms needed
+            else if (arr[i] > dep[j]) {
+                plat_needed--;
+                j++;
+            }
+
+            // Update result if needed
+            if (plat_needed > result)
+                result = plat_needed;
         }
 
+        System.out.println("Cost is "+result);
     }
 
     public static void main(String args[]){

@@ -1,4 +1,4 @@
-package POJO;
+package InterfaceAndJavaBasics;
 
 
 //private class TwoMainMethods {  //private not allowed.

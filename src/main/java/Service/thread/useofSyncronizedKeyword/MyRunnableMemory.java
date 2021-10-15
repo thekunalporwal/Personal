@@ -1,7 +1,5 @@
 package Service.thread.useofSyncronizedKeyword;
 
-import POJO.OfflinePojo;
-
 public class MyRunnableMemory implements Runnable{
 
     private int count=0;

@@ -1,4 +1,4 @@
-package POJO;
+package InterfaceAndJavaBasics;
 
 public  class InheritanceClass {
 
