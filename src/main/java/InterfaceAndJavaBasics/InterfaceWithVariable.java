@@ -5,6 +5,7 @@ public interface InterfaceWithVariable {
     //by default public static and final.
     //declaration is must for every variable.
     String variable="hello";
+     void method();
 }
 class Check{
     static int x[];

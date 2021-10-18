@@ -2,7 +2,7 @@ package Service.thread.executorService;
 
 import java.util.concurrent.*;
 
-public class ExecutorServiceExample {
+public final class ExecutorServiceExample {
 
     public static void main(String args[]) throws ExecutionException, InterruptedException {
         ExecutorService executor1 = Executors.newFixedThreadPool(3);

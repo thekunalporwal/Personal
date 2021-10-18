@@ -1,5 +1,9 @@
 package Service.javaMiscellaneous.streamsExample;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -26,5 +30,22 @@ public class RechargeExample {
        lineItemList.forEach(line->{
             System.out.println("Value find is " +line.toString());
        });
+    }
+}
+@Getter
+@Setter
+@ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
+class PaymentItemList {
+
+    private String displayName;
+    private String displayValue;
+    private Boolean toCopy;
+
+    public PaymentItemList(){}
+
+    public PaymentItemList(String displayName, String displayValue){
+        this.displayName = displayName;
+        this.displayValue = displayValue;
     }
 }

@@ -2,12 +2,15 @@ package InterfaceAndJavaBasics;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.NonNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class POJOOutput {
 
     @JsonProperty("user-Id")
     private Long userId;
+
+    @NonNull
     @JsonProperty("id")
     private int id;
     @JsonProperty("title")

@@ -1,6 +1,13 @@
 package InterfaceAndJavaBasics;
 
-public abstract class AbstractClass {
+public abstract class AbstractClass implements ProtectedInterfaceProblem{
+
+    String str="a";
+
+    public AbstractClass(String str){
+        this.str="kunal";
+        this.str=str;
+    }
 
     abstract void methodAbstract();
 
@@ -15,13 +22,17 @@ public abstract class AbstractClass {
         System.out.println("hehehe");
     }
 
-
 }
 
 class normalClass extends AbstractClass{
-    public static void
-    main(String args[]){
-        AbstractClass abs=new normalClass();
+
+    //Mandatory to call constructor of Parent abstract class with Super.
+    public normalClass(String str) {
+        super(str);
+    }
+
+    public static void main(String args[]){
+        AbstractClass abs=new normalClass("hi");
     }
 
     @Override
@@ -31,6 +42,16 @@ class normalClass extends AbstractClass{
 
     @Override
     void methodAbstract2() {
+
+    }
+
+    @Override
+    public void Method(int i) {
+
+    }
+
+    @Override
+    public void abstractMethod(int i) {
 
     }
 }
