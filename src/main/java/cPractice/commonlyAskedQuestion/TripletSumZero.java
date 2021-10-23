@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.commonlyAskedQuestion;
 
 import java.util.ArrayList;
 import java.util.Arrays;

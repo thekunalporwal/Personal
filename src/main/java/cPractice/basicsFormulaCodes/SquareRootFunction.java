@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.basicsFormulaCodes;
 
 public class SquareRootFunction {
 

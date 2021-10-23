@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.commonlyAskedQuestion;
 
 public class ElementInRotatedArray {
 
@@ -9,11 +9,15 @@ public class ElementInRotatedArray {
 
         if(arr[mid]==key)
             return mid;
-        if(arr[low]<arr[mid]){
+        if(arr[low]<arr[mid]){  //left subArray is sorted
+
             if(key>arr[low] && key<=arr[mid])
                 return rotatedArray(arr,key,low,mid-1);
+
             return rotatedArray(arr,key,mid+1,high);
-        }else{
+
+        }else{    //right subArray must be sorted
+
             if(key>arr[mid] && key<=arr[high])
                 return rotatedArray(arr,key,mid+1,high);
 

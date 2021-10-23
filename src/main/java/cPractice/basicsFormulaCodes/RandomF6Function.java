@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.basicsFormulaCodes;
 
 import java.util.Random;
 

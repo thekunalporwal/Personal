@@ -1,6 +1,5 @@
-package cPractice;
+package cPractice.stackAndQueues;
 import java.text.ParseException;
-import java.util.LinkedList;
 
 public class nthNodeLinkedList {
 

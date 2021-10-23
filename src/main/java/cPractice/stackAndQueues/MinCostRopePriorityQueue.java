@@ -1,4 +1,4 @@
-package cPractice.subArrayProblems;
+package cPractice.stackAndQueues;
 
 import java.util.Arrays;
 import java.util.List;

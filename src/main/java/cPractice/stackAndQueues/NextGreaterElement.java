@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.stackAndQueues;
 
 import java.util.Stack;
 
