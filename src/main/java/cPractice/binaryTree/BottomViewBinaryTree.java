@@ -43,7 +43,6 @@ public class BottomViewBinaryTree {
             System.out.print(e2.getValue()+" ");
         });
 
-
     }
 
     public static void TopViewCall(BottomNode root){

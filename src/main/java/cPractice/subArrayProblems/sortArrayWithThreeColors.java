@@ -35,7 +35,7 @@ public class sortArrayWithThreeColors {
 
         public static void main(String args[]) {
         int[] arr = {1, 2,0,0,1,0,0,2};
-        sortArrayWithThreeColors soryAraryWithThreeColors = new sortArrayWithThreeColors();
-        soryAraryWithThreeColors.sort(arr,arr.length);
+        sortArrayWithThreeColors sortArrayWithThreeColors = new sortArrayWithThreeColors();
+            sortArrayWithThreeColors.sort(arr,arr.length);
     }
 }

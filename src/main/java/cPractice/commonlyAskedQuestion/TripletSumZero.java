@@ -2,6 +2,7 @@ package cPractice.commonlyAskedQuestion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class TripletSumZero {
@@ -9,7 +10,6 @@ public class TripletSumZero {
     public void sumZero(int[] arr){
 
         Arrays.sort(arr);
-        System.out.println(Arrays.toString(arr));
         List<List<Integer>> list=new ArrayList<>();;
 
         for(int i=0 ; i<(arr.length)-2 ; i++){
@@ -23,7 +23,6 @@ public class TripletSumZero {
 
                  while(firstPointer<lastPointer){
                      if(arr[firstPointer]+arr[lastPointer]==Sum){
-                         System.out.println("inside loop");
                          List<Integer> list1=new ArrayList<>();
                          list1.add(-Sum);
                          list1.add(arr[firstPointer]);
@@ -49,10 +48,26 @@ public class TripletSumZero {
 
     }
 
+    static void sumZero(int[] arr,int n){
+        boolean found=false;
+        for(int i=0; i<n-1;i++){
+            HashSet<Integer> hs=new HashSet<>();
+            for(int j=i+1; j<n; j++){
+
+                int x=-(arr[i]+arr[j]);
+                if(hs.contains(x)){
+                    System.out.println(x+" "+arr[i]+" "+arr[j]);
+                }else
+                    hs.add(arr[j]);
+            }
+        }
+    }
+
 
     public static void main(String args[]){
         int[] arr={-1,0,1,2,-1,-4};
         TripletSumZero tripletSumZero=new TripletSumZero();
         tripletSumZero.sumZero(arr);
+        sumZero(arr, arr.length);
     }
 }
