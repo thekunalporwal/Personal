@@ -44,18 +44,33 @@ public class SyncronisedHashMap {
         treeMap.putAll(hashMap);
 
         for(Map.Entry<Integer,String> keys:treeMap.entrySet()){
-            System.out.println(keys.getKey() +" " +keys.getValue());
+//            System.out.println(keys.getKey() +" " +keys.getValue());
         }
 
         //sort map by keys
        List<Map.Entry<Integer,String>> l1= hashMap.entrySet().stream().collect(Collectors.toList());
         Collections.sort(l1,(i1,i2)-> i1.getKey().compareTo(i2.getKey()));
-        System.out.println(l1);
+//        System.out.println(l1);
+
+
+        //using own comparatorMethod
+        List<Map.Entry<Integer,String>> l3= new LinkedList<>(treeMap.entrySet());
+        Collections.sort(l3, new Comparator<Map.Entry<Integer, String>>() {
+            @Override
+            public int compare(Map.Entry<Integer, String> t2, Map.Entry<Integer, String> t1) {
+
+                int number= t2.getValue().compareTo(t1.getValue());
+                return number==0 ? t2.getKey().compareTo(t1.getKey()) : number;
+
+            }
+        });
+        System.out.println("using compare" +l3);
+
 
         //sort map by values
         List<Map.Entry<Integer,String>> l2= new ArrayList<>(hashMap.entrySet());
         Collections.sort(l2, Comparator.comparing(Map.Entry::getValue));
-        System.out.println(l2);
+//        System.out.println(l2);
 
         Map<Integer,String> sortedMap=new LinkedHashMap<Integer,String>();
         for(Map.Entry<Integer,String> map: l2 ){
@@ -70,11 +85,14 @@ public class SyncronisedHashMap {
         Map<Integer,String> hashMap=new HashMap<>();
         hashMap.put(8,"hello");
         hashMap.put(4,"world");
+        hashMap.put(9,"nice");
+        hashMap.put(1,"nice");
+        hashMap.put(2,"nice");
+        hashMap.put(8,"nice");
         hashMap.put(11,"nice");
 
-
         SyncronisedHashMap syncronisedHashMap=new SyncronisedHashMap();
-        syncronisedHashMap.iterateMap(hashMap);
+//        syncronisedHashMap.iterateMap(hashMap);
         syncronisedHashMap.sortMap(hashMap);
 
 

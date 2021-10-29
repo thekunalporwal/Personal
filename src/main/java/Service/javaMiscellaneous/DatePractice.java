@@ -26,13 +26,18 @@ public class DatePractice {
 
         DateTime dateTime = new DateTime();
         dateTime = dateTime.minusMinutes(15);
-        System.out.println(currentDate + "This is 15 minus date " + dateTime);
+//        System.out.println(currentDate + "This is 15 minus date " + dateTime);
+
+        double amount= Double.parseDouble("236.0");
+//        System.out.println(String.format("%.0f",amount * 100));
+
+
 
 
     }
 
         public static void main(String args[]) throws ParseException {
          DatePractice datePractice=new DatePractice();
-         datePractice.dates("2021-09-14");
+         datePractice.dates("2021-10-14");
     }
 }

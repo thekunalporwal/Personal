@@ -1,8 +1,9 @@
 package springdemoAnnotation;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class HappyFortuneService2 implements FortuneService1 {
 
 	@Override

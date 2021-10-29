@@ -1,6 +1,6 @@
 package Service.others;
 
-import POJO.OfflinePojo;
+import InterfaceAndJavaBasics.OfflinePojo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import io.restassured.RestAssured;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import POJO.POJOOutput;
+import InterfaceAndJavaBasics.POJOOutput;
 
 import java.io.IOException;
 

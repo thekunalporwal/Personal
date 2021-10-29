@@ -21,7 +21,6 @@ public class JavaStringJoiner {
                System.out.println("first date of current month is " + billNumber);   // 2019-09-01
         }
 
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         LocalDate firstDay = LocalDate.now().withDayOfMonth(1);

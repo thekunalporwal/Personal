@@ -8,17 +8,20 @@ import org.springframework.stereotype.Component;
 
 @Component()
 public class TenisCoach implements Coach1 {
+//
+//    @Autowired
+//    private HappyFortuneService2 happyFortuneService2;
 
     @Value("${foo.email}")
     private String email;
 
     //field Injection
-    @Autowired
-    @Qualifier("happyFortuneService3")
+    @Autowired()
+    @Qualifier("HappyFortuneService3")
     private FortuneService1 fortuneService1;
 
     //Define a Constructor method
-
+//
 //    @Autowired
 //    public TenisCoach(FortuneService1 fortuneService3){
 //        fortuneService1=fortuneService3;
@@ -29,7 +32,7 @@ public class TenisCoach implements Coach1 {
         System.out.println("Default");
     }
 
-    //Define a setter method
+//    //Define a setter method
 //    @Autowired
 //    public void anyMethodName(FortuneService1 fortuneService2)
 //    {

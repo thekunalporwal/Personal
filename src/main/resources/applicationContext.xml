@@ -10,6 +10,7 @@
     <!-- Define your beans here -->
     <bean id="myFortune"
           class="springdemo.HappyFortuneService">
+<!--          scope="prototype">-->
     </bean>
 
     <bean id="myCoach"
