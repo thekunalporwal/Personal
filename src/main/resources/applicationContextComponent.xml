@@ -14,7 +14,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/abc"/>
             <mvc:exclude-mapping path="/abd/**"/>
-            <bean class="springBoot.interceptor.InterceptorClass"/>
+            <bean class="springdemoAnnotation.springBoot.interceptor.InterceptorClass"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
