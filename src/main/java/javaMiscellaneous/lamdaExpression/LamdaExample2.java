@@ -16,7 +16,6 @@ public class LamdaExample2 implements MyInterface{
            LamdaExample2 lamdaExample2=new LamdaExample2();
            lamdaExample2.printUtf8o("HAHAHA");
 
-           printItToSystemOutString("Hi Static Method");
        }
 
     @Override
