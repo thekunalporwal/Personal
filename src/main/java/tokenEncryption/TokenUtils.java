@@ -3,10 +3,11 @@ package tokenEncryption;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Base64;
 import java.util.*;
 
@@ -18,13 +19,15 @@ public class TokenUtils {
 
         Map<String, Object> claims = new HashMap<String, Object>();
         claims.put("client-id", clientId);
-        claims.put("iat",new Date());
+//        claims.put("iat",new Date());
 
         String token = Jwts .builder()
                 .setIssuedAt(new Date())
                 .addClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, decodedKey)
+                .setExpiration(Date.from(LocalDateTime.now().plus(5, ChronoUnit.MINUTES).toInstant(OffsetDateTime.now().getOffset())))
                 .compact();
+
         return token;
     }
 
@@ -32,7 +35,7 @@ public class TokenUtils {
     public static String createJwt256Token(String secretkey) throws Exception{
         Map<String, Object> header = new HashMap<>();
         header.put("alg", "HS512");
-//        header.put("typ", "JWT");
+        header.put("typ", "JWT");
         JWTCreator.Builder builder = JWT.create();
         builder.withHeader(header);
 
