@@ -1,31 +1,70 @@
 package Service.url;
-
-import Service.utils.LombookCheck;
-import Service.utils.StringEncoderUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+class Result{
+    static int count = 0;
+    public static int getMaximumDistinctCount(List<Integer> a, List<Integer> b, int k) {
+
+        int size = a.size();
+        List<int[]> arrList = new ArrayList<int[]>();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                int arr[] = new int[2];
+                arr[0] = i;
+                arr[1] = j;
+                arrList.add(arr);
+            }
+        }
+        getMaximumDistinct(arrList, arrList.size(), k, a, b);
+        return count;
+    }
+
+    static void getMaximumDistinct(List<int[]> arrList, int n, int r, List<Integer> a, List<Integer> b) {
+        int data[][] = new int[r][2];
+        getMaximum(arrList, data, 0, n - 1, 0, r, a, b);
+    }
+
+    static void getMaximum(List<int[]> arrList, int[][] data, int start, int end, int index, int r, List<Integer> a,
+                           List<Integer> b) {
+        if (index == r) {
+            List<Integer> aTemp = a;
+            List<Integer> bTemp = b;
+            for (int[] s2 : data) {
+                int an = aTemp.get(s2[0]);
+                int bn = bTemp.get(s2[1]);
+                aTemp.set(s2[0], bn);
+                bTemp.set(s2[1], an);
+            }
+            Set<Integer> c = new HashSet<>();
+            for (int i = 0; i < aTemp.size(); i++) {
+                c.add(aTemp.get(i));
+            }
+            if (count < c.size()) {
+                count = c.size();
+            }
+            return;
+        }
+
+        for (int i = start; i <= end && end - i + 1 >= r - index; i++){
+            data[index] = arrList.get(i);
+            getMaximum(arrList, data, i + 1, end, index + 1, r, a, b);
+        }
+
+    }
+}
 
 public class Test {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String args[]) {
 
-        LombookCheck lombookCheck=new LombookCheck();
-        lombookCheck.setIsCircleId(5);
-        StringBuilder query = new StringBuilder( "SELECT CAM.ID, CAM.GL_CODE, CAM.GL_NAME, CAM.NARRATION AS DESCRIPTION, CAM.TXN_KEY, CAM.REF_KEY, CAM.STATUS FROM CTRL_ACCT_MASTER CAM");
-        query.append(" WHERE CAM." + lombookCheck.getIsCircleId() + " =:searchVal");
+        List<Integer> a = new ArrayList<Integer>(), b = new ArrayList<Integer>();
+        a.add(1);a.add(1);a.add(4);a.add(5);a.add(5);
+        b.add(4);b.add(4);b.add(3);b.add(1);b.add(5);
+        //Input ends here
 
-        String str="<0.0% for transaction amount<=Rs.2000 & 0.9% + GST as applicable for transaction amount >Rs.2000 >";
-        List<String> convertedCountriesList = Stream.of(str.split(",", -1))
-                .collect(Collectors.toList());
-
-        System.out.println(StringEncoderUtil.hasHtml(str));
-        System.out.println(StringEncoderUtil.escapeHTML(str));
-
-        System.out.println(convertedCountriesList);
+        //Method call
+        Result result=new Result();
+        System.out.println(result.getMaximumDistinctCount(b, a, 2));
 
     }
 }
