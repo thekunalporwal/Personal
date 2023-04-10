@@ -2,32 +2,16 @@ package Service.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
 @ToString
+@Data
 public class LombookCheck {
-    public Boolean getIntFlag() {
-        return isIntFlag;
-    }
 
-    public void setIsIntFlag(Boolean isIntFlag) {
-        this.isIntFlag = isIntFlag;
-    }
-
-
-    public int getIsCircleId() {
-        return isCircleId;
-    }
-
-    public void setIsCircleId(int isCircleId) {
-        this.isCircleId = isCircleId;
-    }
-
-    private Boolean isIntFlag;
+    private Boolean sound;
     private int isCircleId;
     private String billerId;
     private String billNumber;

@@ -1,16 +1,20 @@
 package Service.others;
 
+import java.time.LocalTime;
+
+
 public class Practice {
       public void checkIterator(){
-          int operatorId=140;
-          int circleId=1;
-          String planCode="102003";
+          int operatorId=0001;
+          StringBuffer sb = new StringBuffer();
+          sb.append("5P").append(String.format("%06d", operatorId)).toString();
+          System.out.println(sb);
+          System.out.println("time is " +LocalTime.now());
+          if(LocalTime.now().isAfter(LocalTime.parse("20:00")) && LocalTime.now().isBefore(LocalTime.parse("22:00")))
+             System.out.println("is after and before");
 
-          StringBuilder mapKey=new StringBuilder();
-
-          mapKey.append(operatorId).append("~").append(circleId).append("~").append(planCode);
-          System.out.println(mapKey.toString());
       }
+
 
 //    public void jsonToObject() {
 //        String jasonString = "{\"success\":true,\"data\":[{\"operatorId\":1,\"operatorName\":\"airtel\",\"operatorTitle\":\"Airtel\",\"categoryName\":\"prepaid\",\"categoryId\":1},{\"operatorId\":2,\"operatorName\":\"vodafone\",\"operatorTitle\":\"Vodafone\",\"categoryName\":\"prepaid\",\"categoryId\":1}]}";
