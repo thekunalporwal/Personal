@@ -6,6 +6,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import net.sf.json.JSONObject;
+import org.openqa.selenium.json.Json;
+
+import java.util.Map;
 
 @ToString
 @Data
@@ -15,6 +19,14 @@ public class LombookCheck {
     private int isCircleId;
     private String billerId;
     private String billNumber;
+    private String email;
+    @ToString.Exclude
+    private String primaryEmail;
+    private String sEmail;
+
+    private JSONObject jsonObject;
+    private Map<String, Object> hashmap;
+
 
     public String jsonStringify(ObjectMapper objectMapper) throws JsonProcessingException {
         return objectMapper.writeValueAsString(this);

@@ -22,44 +22,40 @@ import java.util.stream.Collectors;
 public class RechargeExample {
 
     public static void main (String[] args) throws JsonProcessingException {
-        JSONObject jsonObject2=new JSONObject();
-        JSONObject jsonObject1=new JSONObject();
-
-        JSONObject jsonObject3=new JSONObject();
-        JSONObject paymentConfirmationMode=new JSONObject();
-        paymentConfirmationMode.put("value",true);
-        paymentConfirmationMode.put("sound",false);
-        paymentConfirmationMode.put("print",null);
-        jsonObject3.put("voiceAds",true);
-        jsonObject3.put("paymentConfirmationMode",paymentConfirmationMode);
-
-        jsonObject1.put("featureList",jsonObject3);
-
-        ObjectMapper mapper=new ObjectMapper();
-        FeatureListV2 featureListV2=mapper.readValue(jsonObject3.toString(),FeatureListV2.class);
-        System.out.println("Value featureListV2 is " +featureListV2 );
-
-        JSONObject featureList= mapper.convertValue(featureListV2,JSONObject.class);
-        jsonObject1.put("featureList",featureList);
-
-
-        System.out.println("Value featureList is " +featureList );
-        System.out.println("Json object 1  is " +jsonObject1 );
-
-        if(featureListV2.getPaymentConfirmationMode()==null)
-             System.out.println("mid is ");
-
-
+//        JSONObject jsonObject2=new JSONObject();
+//        JSONObject jsonObject1=new JSONObject();
+//
+//        JSONObject jsonObject3=new JSONObject();
+//        JSONObject paymentConfirmationMode=new JSONObject();
+//        paymentConfirmationMode.put("value",true);
+//        paymentConfirmationMode.put("sound",false);
+//        paymentConfirmationMode.put("print",null);
+//        jsonObject3.put("voiceAds",true);
+//        jsonObject3.put("paymentConfirmationMode",paymentConfirmationMode);
+//
+//        jsonObject1.put("featureList",jsonObject3);
+//
+//        ObjectMapper mapper=new ObjectMapper();
+//        FeatureListV2 featureListV2=mapper.readValue(jsonObject3.toString(),FeatureListV2.class);
+//        System.out.println("Value featureListV2 is " +featureListV2 );
+//
+//        JSONObject featureList= mapper.convertValue(featureListV2,JSONObject.class);
+//        jsonObject1.put("featureList",featureList);
+//
+//
+//        System.out.println("Value featureList is " +featureList );
+//        System.out.println("Json object 1  is " +jsonObject1 );
+//
+//        if(featureListV2.getPaymentConfirmationMode()==null)
+//             System.out.println("mid is ");
 
 
-//        LombookCheck lombookCheck=new LombookCheck();
-//        lombookCheck.setIsCircleId(1);
-//        System.out.println("Value checkfind is " +lombookCheck );
-//        JSONObject jsonObject=new JSONObject();
-//        LombookCheck response=mapper.readValue(jsonObject2.toString(),LombookCheck.class);
-//        jsonObject= JSONObject.fromObject(mapper.writeValueAsString(lombookCheck));
-//        System.out.println("Value checkfind is 2 " +jsonObject);
-//        System.out.println(" is " + response);
+
+
+        LombookCheck lombookCheck=new LombookCheck();
+        lombookCheck.setIsCircleId(1);
+        lombookCheck.setBillNumber("12345");
+        System.out.println("Value checkfind is " +lombookCheck );
 
 
 

@@ -1,50 +1,94 @@
 package Service.others;
 
+import Service.utils.LombookCheck;
+import logback.LoggerUtil;
+import net.sf.json.JSONObject;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.time.LocalTime;
-
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Practice {
-      public void checkIterator(){
-          int operatorId=0001;
-          StringBuffer sb = new StringBuffer();
-          sb.append("5P").append(String.format("%06d", operatorId)).toString();
-          System.out.println(sb);
-          System.out.println("time is " +LocalTime.now());
-          if(LocalTime.now().isAfter(LocalTime.parse("20:00")) && LocalTime.now().isBefore(LocalTime.parse("22:00")))
-             System.out.println("is after and before");
+    private static final Logger logger = LoggerFactory.getLogger(Practice.class);
+
+    private static final String EMAIL_DTO_REGEX = "(?i)(Email=)(\\w{5})(\\w*)";
+    private static final Pattern EMAIL_DTO_PATTERN = Pattern.compile(EMAIL_DTO_REGEX,Pattern.CASE_INSENSITIVE);
+    private static final String EMAIL_DTO_REPLACEMENT_REGEX = "$1****$3";
+
+    /* Regex to identify email keys of JSON objects. */
+    private static final String EMAIL_JSON_REGEX = "(\"[a-zA-Z0-9\\s]*email\":\\s*\")(\\w{4})(\\w*)";
+    private static final Pattern EMAIL_JSON_PATTERN = Pattern.compile(EMAIL_JSON_REGEX,Pattern.CASE_INSENSITIVE);
+    private static final String EMAIL_JSON_REPLACEMENT_REGEX = "$1****$3";
+
+    public static void checkIterator(LombookCheck lombookCheck){
+
+        logger.info("logger info for hashmap {}", mask(lombookCheck.getHashmap()));
+
+        logger.info("logger info is {}", mask(lombookCheck));
+        logger.info("logger info json object is {}", mask(lombookCheck.getJsonObject()));
+        String list="country=username@domain.com, email=kunalgupta@gmail.com, mode=sandbox, wixMerchantId=4aeffb33-78a5-498c-9769-fb1968ad9558";
+
+        System.out.println("Masked input string:" + lombookCheck);
+
 
       }
 
+    public static String mask(Object loggerObject) {
 
-//    public void jsonToObject() {
-//        String jasonString = "{\"success\":true,\"data\":[{\"operatorId\":1,\"operatorName\":\"airtel\",\"operatorTitle\":\"Airtel\",\"categoryName\":\"prepaid\",\"categoryId\":1},{\"operatorId\":2,\"operatorName\":\"vodafone\",\"operatorTitle\":\"Vodafone\",\"categoryName\":\"prepaid\",\"categoryId\":1}]}";
-//
-//        RechargeSharedOperator rechargeSharedOperator = new Gson().fromJson(jasonString, RechargeSharedOperator.class);
-//
-//        List<Data> list = new ArrayList<>(rechargeSharedOperator.getData());
-//
-//        for (Data datalist : list) {
-//            System.out.println(datalist.getOperatorId());
-//            System.out.println(datalist.getOperatorName());
-//        }
-//    }
-//
-//    public void arrayListPrint(){
-//        List<String> widgetsPriority = new ArrayList<>();
-//        widgetsPriority.add("KYC");
-//        widgetsPriority.add("ZIP");
-//        widgetsPriority.add("UPI");
-//        widgetsPriority.add("AUTO_RECHARGE");
-//        widgetsPriority.add("GRAND_SLAM");
-//
-//
-//        widgetsPriority.forEach(widgets -> System.out.println(widgets));
-//    }
 
+        if(Objects.isNull(loggerObject))
+            return null;
+
+        String maskedMessage = loggerObject.toString();
+        try {
+            maskedMessage = maskEmail(maskedMessage);
+        } catch (Exception e) {
+            logger.info("Failed while masking");
+        }
+        return maskedMessage;
+    }
+
+    private static String maskEmail(String message) {
+        Matcher matcher;
+
+        matcher = EMAIL_DTO_PATTERN.matcher(message);
+        message= maskMatcher(matcher,EMAIL_DTO_REPLACEMENT_REGEX);
+
+        matcher = EMAIL_JSON_PATTERN.matcher(message);
+        message= maskMatcher(matcher,EMAIL_JSON_REPLACEMENT_REGEX);
+//        throw new RuntimeException();
+
+
+        return message;
+    }
+
+    private static String maskMatcher(Matcher matcher, String maskStr) {
+        return matcher.replaceAll(maskStr);
+    }
 
     public static void main(String args[]) {
-        Practice practice=new Practice();
-        practice.checkIterator();
+        JSONObject object = new JSONObject();
+        object.put("currency3","1123");
+        object.put(" 8pEmail","kunagup@gmail.com");
+        object.put("currency23","1123");
+
+        Map<String,Object> hashmap=new HashMap<>();
+        hashmap.put("primary","hashmap@gmail.com");
+
+
+        LombookCheck lombookCheck=new LombookCheck();
+        lombookCheck.setBillNumber("1345");
+        lombookCheck.setEmail("kunalgupta@gmail.com");
+        lombookCheck.setPrimaryEmail("comojne@gmail.com");
+//        lombookCheck.setSEmail("kunalgupta@gmail,com");
+
+        lombookCheck.setJsonObject(object);
+        lombookCheck.setHashmap(hashmap);
+        checkIterator(lombookCheck);
 //        practice.jsonToObject();
 //        practice.arrayListPrint();
     }
