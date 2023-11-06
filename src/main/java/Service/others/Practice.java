@@ -26,13 +26,20 @@ public class Practice {
 
     public static void checkIterator(LombookCheck lombookCheck){
 
-        logger.info("logger info for hashmap {}", mask(lombookCheck.getHashmap()));
+//        logger.info("logger info for hashmap {}", mask(lombookCheck.getHashmap()));
 
-        logger.info("logger info is {}", mask(lombookCheck));
-        logger.info("logger info json object is {}", mask(lombookCheck.getJsonObject()));
-        String list="country=username@domain.com, email=kunalgupta@gmail.com, mode=sandbox, wixMerchantId=4aeffb33-78a5-498c-9769-fb1968ad9558";
+//        logger.info("logger info is {}", mask(lombookCheck));
+//        logger.info("logger info json object is {}", mask(lombookCheck.getJsonObject()));
+//        String list="country=username@domain.com, email=kunalgupta@gmail.com, mode=sandbox, wixMerchantId=4aeffb33-78a5-498c-9769-fb1968ad9558";
+        String payOpt="UPI,STORE_CASH,CC,DC";
+        if((payOpt.indexOf("EMI_DC", 0) >= 0 || payOpt.indexOf("EMI", 0) < 0)
+                && !(("PPBL".equals("HDFC") || "PPBT".equals("HDFC")) &&
+                ((payOpt.indexOf("NB", 0) >= 0) || (payOpt.indexOf("BANK_TRANSFER", 0) >= 0) || (payOpt.indexOf("BANK_TRANSFER_CHECKOUT", 0) >= 0)))){
 
-        System.out.println("Masked input string:" + lombookCheck);
+            logger.info("logger info is {}",payOpt.indexOf("STORE_CASH",0) >=0);
+
+            System.out.println("Masked input string:" + lombookCheck);
+        }
 
 
       }
@@ -77,7 +84,7 @@ public class Practice {
         object.put("currency23","1123");
 
         Map<String,Object> hashmap=new HashMap<>();
-        hashmap.put("primary","hashmap@gmail.com");
+        hashmap.put("primaryEmail","hashmap@gmail.com");
 
 
         LombookCheck lombookCheck=new LombookCheck();

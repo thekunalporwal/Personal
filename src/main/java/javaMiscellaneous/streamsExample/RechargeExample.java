@@ -13,10 +13,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RechargeExample {
@@ -74,12 +71,19 @@ public class RechargeExample {
         lineItemList2=  lineItemList.stream().filter(l ->
                         (StringUtils.equalsIgnoreCase(l.getDisplayName(),"C"))).collect(Collectors.toList());
 
-        System.out.println("Value for check2 is  " +lineItemList2);
+        Set<String> str =  lineItemList.parallelStream().map(l -> l.getDisplayName()).collect(Collectors.toSet());
+
+        System.out.println("Value for check2 is  " +str);
 
 
         lineItemList.forEach(line->{
             System.out.println("Value find sequence is " +line.toString());
        });
+
+
+
+
+
     }
 
     public static void justcheckBoolean(List<PaymentItemList> lineItemList,MutableBoolean check){
