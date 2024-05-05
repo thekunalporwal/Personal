@@ -1,5 +1,6 @@
 package javaMiscellaneous.streamsExample;
 
+import InterfaceAndJavaBasics.Enum1;
 import Service.utils.FeatureListV2;
 import Service.utils.LombookCheck;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -52,7 +53,19 @@ public class RechargeExample {
         LombookCheck lombookCheck=new LombookCheck();
         lombookCheck.setIsCircleId(1);
         lombookCheck.setBillNumber("12345");
-        System.out.println("Value checkfind is " +lombookCheck );
+//        System.out.println("Value checkfind is " +lombookCheck );
+
+        List<String> enumNames = Arrays.stream(Enum1.values()).map(Enum1::getName).collect(Collectors.toList());
+
+        List<String> upiList= new ArrayList<>(Arrays.asList("HDFU", "AXIU"));
+        List<String> bankList=new ArrayList<>(Arrays.asList("HDFU", "AXIU", "SBIU","PEDC"));
+
+        String mbid= "";
+        System.out.println("bank enums are " +mbid.toString());
+
+
+
+
 
 
 
@@ -68,16 +81,21 @@ public class RechargeExample {
 
         System.out.println("Value find is " +lineItemList);
 
-        lineItemList2=  lineItemList.stream().filter(l ->
-                        (StringUtils.equalsIgnoreCase(l.getDisplayName(),"C"))).collect(Collectors.toList());
+        lineItemList.forEach(l -> {
+            if(!StringUtils.equalsIgnoreCase(l.getDisplayName(),"C")){
+                System.out.println("Value for forEach inside is  " +l);
+                return;
+            }
+            System.out.println("Value for forEach is  " +l);
+});
 
-        Set<String> str =  lineItemList.parallelStream().map(l -> l.getDisplayName()).collect(Collectors.toSet());
+//        Set<String> str =  lineItemList.parallelStream().map(l -> l.getDisplayName()).collect(Collectors.toSet());
 
-        System.out.println("Value for check2 is  " +str);
+//        System.out.println("Value for check2 is  " +lineItemList);
 
 
         lineItemList.forEach(line->{
-            System.out.println("Value find sequence is " +line.toString());
+//            System.out.println("Value find sequence is " +line.toString());
        });
 
 

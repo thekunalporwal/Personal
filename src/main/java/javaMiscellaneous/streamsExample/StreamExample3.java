@@ -19,22 +19,8 @@ public class StreamExample3 {
          }
      }
 
-    public static String generateHTIDRetry(){
-        int count=0;
-        String htid="";
-        while ( count < 2 && StringUtils.isBlank(htid)) {
-            System.out.println("COUNT found is " + count);
-            htid="";
-//            if (StringUtils.isNotBlank(htid))
-//                return htid;
-            count++;
-        }
-        return htid;
-    }
-
     public static void main (String[] args) {
 
-        System.out.println("htid found is " +generateHTIDRetry());
 
         List<Employee> list = new ArrayList<>();
         list.add(new Employee("5000"));

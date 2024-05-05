@@ -34,7 +34,7 @@ public class DatePractice {
 
         SampleDTO sampleDTO=new SampleDTO();
         sampleDTO.setUserId("Kunal");
-        sampleDTO.setEnumValue(Enum1.HEY_KUNAL);
+        sampleDTO.setEnumValue(Enum1.INDC);
 
         SampleDTO sampleDTO2=new SampleDTO();
         sampleDTO2.setUserId("Kunal");
@@ -44,8 +44,6 @@ public class DatePractice {
 //                System.out.println("OBJstr is" + objStr);
 
 //        SampleDTO obj= SampleDTO.getInstance(objStr,new ObjectMapper());
-        if(sampleDTO2!=null && Enum1.HEY.equals(null))
-         System.out.println("OBJ str DTO is" + sampleDTO2);
 
 //        System.out.println("OBJstr DTO boolean is" + obj.equals(sampleDTO2));
 

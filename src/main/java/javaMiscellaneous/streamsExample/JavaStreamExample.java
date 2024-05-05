@@ -1,5 +1,7 @@
 package javaMiscellaneous.streamsExample;
 
+import net.sf.json.JSONObject;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
@@ -11,6 +13,30 @@ public class JavaStreamExample {
     public static void main (String[] args) {
 
 
+        List<Long> list6 = new ArrayList<>();
+        list6.add(12345L);
+        list6.add(34567L);
+
+
+        List<Map<String,Object>> terminalIdList = new ArrayList<>();
+        Map<String,Object> map1 = new HashMap<>();
+        map1.put("TID", 12345L);
+        map1.put("BANK_TID","12345");
+
+        terminalIdList.add(map1);
+
+        terminalIdList.forEach(terminal -> completeDigiposUPIOnboarding("mid", (Long) terminal.get("TID"), (String) terminal.get("BANK_TID")));
+
+
+
+        String sql="select * from table where";
+        sql += " id in ("+ StringUtils.join(list6,",") +")";
+        System.out.println(sql);
+
+
+
+
+
 
         List<String> list = new ArrayList<>();
         list.add("Hi");
@@ -19,17 +45,11 @@ public class JavaStreamExample {
         list.add("What");
 
         Stream<String> strem=list.stream();
+        String ADDRESS_PATTERN = "^[-a-zA-Z0-9,(),\\[\\].\\/#'\\s]+$";
 
-//        Stream<String> stream2=strem.map((String s) -> {
-//            return s.toLowerCase();
-//                }
-//        );
+        String address="OPP MANGALA HOSPITAL & SYDICATE BANK";
 
-        "abc".equals(null);
-        String abc=null;
-        List<String> sourceBankList = Arrays.stream("HFDC,hedc".split(",")).map(String::trim).collect(Collectors.toList());
-
-        System.out.println("True find is " + abc.equals("null"));
+        System.out.println("True find is " +StringUtils.equalsIgnoreCase("abc",null));
 
         Set<String> oldChargebackEmails = new LinkedHashSet<>();
         Set<String> chargebackEmailsNew = new LinkedHashSet<>();
@@ -66,6 +86,10 @@ public class JavaStreamExample {
             System.out.println(ls);
         });
 
+    }
+
+    private static void completeDigiposUPIOnboarding(String mid, Long tid, String bankTid){
+        System.out.println("mid is " + mid + " tid is " + tid + " bankTid is " + bankTid);
     }
 
 
