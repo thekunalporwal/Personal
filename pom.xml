@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<repositories>
 		<repository>
@@ -44,9 +44,9 @@
 	<dependencies>
 
 		<dependency>
-				<groupId>e-iceblue</groupId>
-				<artifactId>spire.doc</artifactId>
-				<version>10.9.8</version>
+			<groupId>e-iceblue</groupId>
+			<artifactId>spire.doc</artifactId>
+			<version>10.9.8</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aspose</groupId>
@@ -88,20 +88,16 @@
 			<artifactId>rest-assured</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.apache.poi</groupId>-->
-<!--			<artifactId>poi-ooxml</artifactId>-->
-<!--			<version>3.17</version>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.11.4</version>
-		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.13.4.1</version>
+			<version>2.10.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.10.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -116,14 +112,14 @@
 		</dependency>
 
 		<dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+			<groupId>com.vaadin.external.google</groupId>
+			<artifactId>android-json</artifactId>
+			<version>0.0.20131108.vaadin1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 			<version>1.18.22</version>
 		</dependency>
 		<dependency>
@@ -134,6 +130,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -174,43 +174,13 @@
 		<dependency>
 			<groupId>fr.opensagres.xdocreport</groupId>
 			<artifactId>org.apache.poi.xwpf.converter.pdf</artifactId>
-			<version>LATEST</version>
+			<version>1.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-scratchpad</artifactId>
 			<version>5.2.1</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.apache.logging.log4j</groupId>-->
-<!--			<artifactId>log4j-slf4j-impl</artifactId>-->
-<!--			<version>2.20.0</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.logging.log4j</groupId>-->
-<!--			<artifactId>log4j-core</artifactId>-->
-<!--			<version>2.20.0</version>-->
-<!--		</dependency>-->
-
-		<!-- Thanks for using https://jar-download.com -->
-
-<!--		<dependency>-->
-<!--			<groupId>org.glassfish.jersey.core</groupId>-->
-<!--			<artifactId>jersey-client</artifactId>-->
-<!--			<version>2.25.1</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.glassfish.jersey.ext</groupId>-->
-<!--			<artifactId>jersey-bean-validation</artifactId>-->
-<!--			<version>2.22.2</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.glassfish.jersey.containers</groupId>-->
-<!--			<artifactId>jersey-container-servlet</artifactId>-->
-<!--			<version>2.22.2</version>-->
-<!--		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
