@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.core.env.Environment;
+
 
 @Component()
 public class TenisCoach implements Coach1 {
@@ -14,6 +16,9 @@ public class TenisCoach implements Coach1 {
 
     @Value("${foo.email}")
     private String email;
+
+    @Autowired
+    private Environment env;
 
     //field Injection
     @Autowired()
@@ -42,6 +47,7 @@ public class TenisCoach implements Coach1 {
     @Override
     public String getDailyWorkout() {
         System.out.println(email);
+        System.out.println(env.getProperty("foo.team"));
         return "Spend 60 minutes on batting practice";
     }
 
