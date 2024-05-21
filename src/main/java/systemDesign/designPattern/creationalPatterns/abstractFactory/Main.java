@@ -3,7 +3,7 @@ package systemDesign.designPattern.creationalPatterns.abstractFactory;
 import systemDesign.designPattern.creationalPatterns.factoryMethod.LocalPlanFactory;
 import systemDesign.designPattern.creationalPatterns.factoryMethod.PlanAbstractClass;
 
-public class AbstractFactoryProducer extends AbstractFactoryOfFactory{
+public class Main extends AbstractFactoryOfFactory{
     @Override
     InternationFactory getInternationalFactory(String factoryType) {
         if (String.valueOf(factoryType).equals("International")) {
@@ -21,7 +21,7 @@ public class AbstractFactoryProducer extends AbstractFactoryOfFactory{
     }
 
     public static void main(String[] args) {
-        AbstractFactoryProducer abstractFactoryProducer = new AbstractFactoryProducer();
+        Main abstractFactoryProducer = new Main();
         InternationFactory internationFactory = abstractFactoryProducer.getInternationalFactory("International");
         System.out.println(internationFactory.getPlan("China").getInternationPlan());
         LocalPlanFactory localPlanFactory = abstractFactoryProducer.getPlanFactory("OTHERS");

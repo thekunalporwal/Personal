@@ -4,6 +4,8 @@ public class LeaderInArray {
     public static void leaderArray(int[] arr , int n) {
 
         int maxSoFar=arr[n-1];
+
+        System.out.println(n);
         for(int i=n-1; i>=0; i--){
             if(arr[i]>=maxSoFar){
                 maxSoFar=arr[i];

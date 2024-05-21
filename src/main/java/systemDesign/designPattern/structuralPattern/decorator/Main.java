@@ -1,9 +1,10 @@
 package systemDesign.designPattern.structuralPattern.decorator;
 
-public class PizzaDriver {
+public class Main {
 
     /**
      * The Decorator Pattern uses COMPOSITION instead of inheritance to extend the functionality of an object at runtime.
+     * to stop class explosion we use decorator pattern
      */
 
     public static void main(String[] args) {
