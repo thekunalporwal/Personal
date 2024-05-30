@@ -10,10 +10,16 @@ public class ElementInRotatedArray {
         if(arr[mid]==key)
             return mid;
         if(arr[low]<arr[mid]){  //left subArray is sorted
-
+              /* As this subarray is sorted, we
+               can quickly check if key lies in
+               half or other half */
             if(key>arr[low] && key<=arr[mid])
                 return rotatedArray(arr,key,low,mid-1);
 
+            /*If key not lies in first half subarray,
+           Divide other half  into two sub arrays,
+           such that we can quickly check if key lies
+           in other half */
             return rotatedArray(arr,key,mid+1,high);
 
         }else{    //right subArray must be sorted
@@ -21,7 +27,7 @@ public class ElementInRotatedArray {
             if(key>arr[mid] && key<=arr[high])
                 return rotatedArray(arr,key,mid+1,high);
 
-                return rotatedArray(arr,key,low,mid-1);
+            return rotatedArray(arr,key,low,mid-1);
         }
 
     }

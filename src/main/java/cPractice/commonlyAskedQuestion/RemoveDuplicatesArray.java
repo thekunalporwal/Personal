@@ -1,4 +1,4 @@
-package cPractice;
+package cPractice.commonlyAskedQuestion;
 
 public class RemoveDuplicatesArray {
 
