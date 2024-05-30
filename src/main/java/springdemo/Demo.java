@@ -1,6 +1,6 @@
 package springdemo;
 
-public class MyApp {
+public class Demo {
 
     public static void main (String args[])
     {

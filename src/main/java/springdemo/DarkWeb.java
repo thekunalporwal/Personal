@@ -1,4 +1,4 @@
-package springdemoAnnotation.springBoot;
+package springdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Bean;
 import springdemoAnnotation.springBoot.interceptor.CustomRequestLoggingFilter;
 
 @SpringBootApplication
-public class MycoolappApplication {
+public class DarkWeb {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(MycoolappApplication.class, args);
+		SpringApplication.run(DarkWeb.class, args);
 	}
 
 	//Both interceptor and filter can be used to log the request and response.
