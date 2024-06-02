@@ -1,6 +1,6 @@
 package javaMiscellaneous.multithreading;
 
-public class JavaThreadInterfaceSleepMethod implements Runnable{
+public class RunnableInterfaceThreadSleepMethod implements Runnable{
 
 
     @Override
@@ -18,8 +18,11 @@ public class JavaThreadInterfaceSleepMethod implements Runnable{
 
     public static void main(String args[]) {
 
-        Thread t1=new Thread(new JavaThreadInterfaceSleepMethod());
+        Thread t1=new Thread(new RunnableInterfaceThreadSleepMethod());
+        Thread t2=new Thread(new RunnableInterfaceThreadSleepMethod());
+
         t1.start();
+        t2.start();
 
     }
 }

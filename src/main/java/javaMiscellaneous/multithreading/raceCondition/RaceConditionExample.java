@@ -1,11 +1,17 @@
 package javaMiscellaneous.multithreading.raceCondition;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class RaceConditionExample {
 
 
     public static void main(String args[]) {
 
         Counter counter=new Counter() ;
+
+        Map<String,String> map = new ConcurrentHashMap<>();
+        map.remove("key");
 
         Thread t1=
                 new Thread(getRunnale(counter ,"THREAD 1 final count "));

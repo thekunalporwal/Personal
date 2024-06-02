@@ -31,7 +31,7 @@ public class RechargeKafkaProblem {
 
             if(counter == 4) {
                 try {
-                    countDownLatch.await(1, TimeUnit.MINUTES);
+                    countDownLatch.await(5, TimeUnit.SECONDS);
                 } catch (InterruptedException e) {
                 }
                 countDownLatch = new CountDownLatch(4);
@@ -70,7 +70,7 @@ public class RechargeKafkaProblem {
         public void run() {
             try {
                 System.out.println(Thread.currentThread()+ "thread is " +value);
-                Thread.sleep(5000);
+//                Thread.sleep(5000);
             } catch (Exception e) {
             }finally {
                 latch.countDown();
