@@ -5,7 +5,7 @@ public class SeparateObjectsUsingSynchronized {
     public static void main(String args[]) {
 
         Runnable runnable1=new MyRunnableMemory() ;
-//        Runnable runnable2=new MyRunnableMemory() ;
+        Runnable runnable2=new MyRunnableMemory() ;
 
         Thread t1=
                 new Thread(runnable1 ,"THREAD 1");

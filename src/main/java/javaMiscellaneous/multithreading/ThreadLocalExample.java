@@ -7,7 +7,7 @@ public class ThreadLocalExample {
         Thread t1= new Thread( () -> {
             threadLocal.set("ThreadLocal 1");
             threadLocal.remove();
-            System.out.println("This is the thread 1" +Thread.currentThread().getName() +"and " + threadLocal.get());
+            System.out.println("This is the thread 1 " +Thread.currentThread().getName() +" and " + threadLocal.get());
         });
 
         Thread t2= new Thread(() -> {
@@ -17,7 +17,7 @@ public class ThreadLocalExample {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("This is the thread 2" +Thread.currentThread().getName() +"and " + threadLocal.get());
+            System.out.println("This is the thread 2 " +Thread.currentThread().getName() +" and " + threadLocal.get());
         });
 
         t1.start();

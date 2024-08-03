@@ -5,7 +5,7 @@ class StaticSynchronizationProblem {
     //if you don't put static here it will result in thread interference as we are calling this method with two different objects.
     synchronized static void printTable(int n){
             for(int i=1;i<=10;i++){
-                System.out.println(n*i);
+                System.out.println(Thread.currentThread().getName() + " - " + n*i);
                 try{
                     Thread.sleep(4);
                 }catch(Exception e){}

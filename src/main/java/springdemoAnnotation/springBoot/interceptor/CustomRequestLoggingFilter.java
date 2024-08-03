@@ -11,7 +11,7 @@ public class CustomRequestLoggingFilter extends AbstractRequestLoggingFilter {
     @Override
     protected void beforeRequest(@NotNull HttpServletRequest request, String message) {
         // Log the message before the request is processed
-        System.out.println("Inside CustomRequestLoggingFilter beforeRequest method");
+//        System.out.println("Inside CustomRequestLoggingFilter beforeRequest method");
         logger.info(message);
     }
 
