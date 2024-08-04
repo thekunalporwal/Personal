@@ -9,7 +9,7 @@ import springdemoAnnotation.springBoot.interceptor.CustomRequestLoggingFilter;
 public class DarkWeb {
 
 	public static void main(String[] args) {
-
+		//http://localhost:8282/actuator/health
 		SpringApplication.run(DarkWeb.class, args);
 	}
 

@@ -19,21 +19,21 @@ public class InvokeAllExample {
         try {
             List<Future<String>> results = executor1.invokeAll((Collection<Callable<String>>) callables);
 
-            for (Future result : results) {
+            for (Future<String> result : results) {
                 System.out.println("result = " + result.get());
             }
         }catch (InterruptedException | ExecutionException e){
+            throw new RuntimeException(e);
         }
 
         executor1.shutdown();
     }
 
-    private static Callable newCallable(String message) {
-        return new Callable() {
+    private static Callable<String> newCallable(String message) {
+        return new Callable<String>() {
             @Override
-            public Object call() {
-                String msg = Thread.currentThread().getName() + ": " + message;
-                return msg;
+            public String call() {
+                return Thread.currentThread().getName() + ": " + message;
             }
         };
     }

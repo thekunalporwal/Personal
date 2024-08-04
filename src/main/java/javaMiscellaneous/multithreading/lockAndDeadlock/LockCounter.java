@@ -1,4 +1,4 @@
-package javaMiscellaneous.multithreading.lockExample;
+package javaMiscellaneous.multithreading.lockAndDeadlock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

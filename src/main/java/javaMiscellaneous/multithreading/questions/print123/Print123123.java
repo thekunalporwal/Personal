@@ -1,4 +1,4 @@
-package javaMiscellaneous.multithreading.questions;
+package javaMiscellaneous.multithreading.questions.print123;
 
 public class Print123123 implements Runnable {
     int threadId;
@@ -12,7 +12,7 @@ public class Print123123 implements Runnable {
     @Override
     public void run() {
 
-        while (true) {
+        while (number < 100 ) {
             synchronized (monitor){
                while(number%3 != threadId) {
                  try {

@@ -8,6 +8,10 @@ public class Latch extends Thread {
 
         CountDownLatch latch = new CountDownLatch(3);
 
+        // We specify the number of threads it should wait for,
+        // all such thread are required to do count down by calling CountDownLatch.countDown()
+        // Once they are completed or ready to the job. As soon as count reaches zero, the waiting task starts running.
+        // In this case waiter will start running once Decrementer has done its job.
         Waiter waiter = new Waiter(latch);
         Decrementer decrementer = new Decrementer(latch);
 

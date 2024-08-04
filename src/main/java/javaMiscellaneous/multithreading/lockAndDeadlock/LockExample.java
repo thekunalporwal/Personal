@@ -1,4 +1,4 @@
-package javaMiscellaneous.multithreading.lockExample;
+package javaMiscellaneous.multithreading.lockAndDeadlock;
 
 import javaMiscellaneous.multithreading.raceCondition.Counter;
 

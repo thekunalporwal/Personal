@@ -1,7 +1,5 @@
 package javaMiscellaneous.multithreading.questions.print123;
 
-import javaMiscellaneous.multithreading.questions.Print123123;
-
 public class Trigger123 {
 
 

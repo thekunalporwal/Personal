@@ -1,9 +1,20 @@
 package javaMiscellaneous;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
 public class ThreadExample {
 
 
     public static void main(String args[]) {
+
+
+        Hashtable<String,String> hashtable= new Hashtable<>();
+        hashtable.put("1","1");
+
+        List<Hashtable<String,String>> list = new ArrayList<>();
+        list.add(hashtable);
 
         Runnable runnable = new Runnable() {
             @Override

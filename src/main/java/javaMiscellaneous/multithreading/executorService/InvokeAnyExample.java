@@ -19,18 +19,20 @@ public class InvokeAnyExample {
         callables.add(newCallable("Task 1.2"));
         callables.add(newCallable("Task 1.3"));
 
-        String result= (String) executor1.invokeAny((Collection) callables);
+        //Assume you have 3 services to call, and you want to get the result of the first service which is completed.
+        // It will return the result of the first service which is completed. (Multi bank edc configuration use-case of OE)
+
+        String result= executor1.invokeAny( callables);
         System.out.println("result = " + result);
 
         executor1.shutdown();
     }
 
-    private static Callable newCallable(String message) {
-        return new Callable() {
+    private static Callable<String> newCallable(String message) {
+        return new Callable<String>() {
             @Override
-            public Object call() {
-                String msg = Thread.currentThread().getName() + ": " + message;
-                return msg;
+            public String call() {
+                return Thread.currentThread().getName() + ": " + message;
             }
         };
     }

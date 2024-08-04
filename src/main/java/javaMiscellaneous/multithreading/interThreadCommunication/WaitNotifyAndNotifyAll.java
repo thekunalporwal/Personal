@@ -1,5 +1,8 @@
 package javaMiscellaneous.multithreading.interThreadCommunication;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class WaitNotifyAndNotifyAll {
 
     public static void main(String args[]) {
