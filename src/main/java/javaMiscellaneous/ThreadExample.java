@@ -1,8 +1,12 @@
 package javaMiscellaneous;
 
+import InterfaceAndJavaBasics.OfflinePojo;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ThreadExample {
 
@@ -38,9 +42,9 @@ public class ThreadExample {
 
         Thread t1 = new Thread(runnable);
         Thread t2 = new Thread(runnable1);
-
-        t1.start();
-        t2.start();
+//
+//        t1.start();
+//        t2.start();
     }
 
 }

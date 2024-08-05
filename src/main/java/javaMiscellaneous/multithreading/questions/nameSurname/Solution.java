@@ -1,4 +1,4 @@
-package javaMiscellaneous.multithreading.questions;
+package javaMiscellaneous.multithreading.questions.nameSurname;
 
 public class Solution {
 

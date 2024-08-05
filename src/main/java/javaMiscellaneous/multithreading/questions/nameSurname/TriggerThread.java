@@ -1,4 +1,4 @@
-package javaMiscellaneous.multithreading.questions;
+package javaMiscellaneous.multithreading.questions.nameSurname;
 
 //Question 1 : WAP to print Deepak from one thread and Kumar from second thread infinitely.
 public class TriggerThread {
